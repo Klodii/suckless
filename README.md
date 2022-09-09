@@ -43,6 +43,8 @@ $ cp custom/dwm.desktop /usr/share/xsessions/
 I personally did the second option because with ubuntu (and two accounts) the first method didn't work.
 
 ## Add wallpaper
+(in the install_session script it will be installed the default wallpaper, to change it you have to change the `~/.config/wallpaper.png` file)
+
 If you want to use a wallpaper install `xwallpaper` and designate a location to store the image you want to use ha a wallpaper, this location will be used by `xwallpaper` to render the image.
 
 In order to make the wallpaper persistent after each login we put the xwallpaper command in the .xinitrc or startdwm file, and the path of the image is `~/.config/wallpaper.png`
