@@ -4,5 +4,7 @@ setxkbmap -option caps:escape
 # Add wallpaper
 xwallpaper --zoom ~/.config/wallpaper.png
 statusbar &
+# notification deamon, used with notify-send
+dunst &
 
 exec dwm
