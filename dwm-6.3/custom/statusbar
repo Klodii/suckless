@@ -12,8 +12,11 @@ status(){
     fi
     echo "$delim"
 
-    # internet connection status
-    sed "s/down/Internt down/;s/up/Internt up/" /sys/class/net/w*/operstate
+    # Wifi quality percentage and up/down if ethernet is connected
+    grep "^\s*w" /proc/net/wireless | awk '{ print "WiFi", int($3 * 100 / 70) "%" }'
+    # e* indicates ethernet connection
+    # if you have wnat to indicate if a wifi is connected just change it to w*
+    sed "s/down/Ethernet down/;s/up/Ethernet up/" /sys/class/net/e*/operstate
     echo "$delim"
 
     date "+%d %b %Y (%a) %H:%M"
