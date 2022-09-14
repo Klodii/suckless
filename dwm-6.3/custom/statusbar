@@ -1,8 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 
 delim='|'
 
 status(){
+    # volume
+    mute=$(pulsemixer --get-mute)
+    if [[ $mute == 1 ]]; then
+        echo "Mute vol."
+    else
+        pulsemixer --get-volume | awk '{print $1 "% vol."}'
+    fi
+    echo "$delim"
+
     # internet connection status
     sed "s/down/Internt down/;s/up/Internt up/" /sys/class/net/w*/operstate
     echo "$delim"
