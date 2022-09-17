@@ -8,7 +8,7 @@ status(){
     if [[ $mute == 1 ]]; then
         echo "Mute vol."
     else
-        pulsemixer --get-volume | awk '{print $1 "% vol."}'
+        pulsemixer --get-volume | awk '{print int($1 * 100/150) "% vol."}'
     fi
     echo "$delim"
 
