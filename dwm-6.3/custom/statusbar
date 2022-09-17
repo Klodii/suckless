@@ -46,13 +46,13 @@ status(){
         # if battery folder does not exist exirt from loop
         [ -d "$battery" ] || break
 
-        capacity=$(cat "$battery"/capacitry) || break
+        capacity=$(cat "$battery"/capacity) || break
         status=$(cat "$battery"/status)
 
         # If it is discharging and 25% or less, we will add a ! as a warning
         [ "$status" = "$Discharging" ] && ["$capacity" -le 25 ] $$ warn="!"
 
-        case "$(cat $capacity)" in
+        case $capacity in
             100) b_icon="" ;;
             9[0-9]) b_icon="" ;;
             8[0-9]|7[0-9]) b_icon="" ;;
@@ -63,10 +63,10 @@ status(){
             [0-9]) b_icon="" ;;
         esac
 
-        echo "$b_icon$capacity$warn"
+        echo "$b_icon$capacity%$warn"
     done
 
-    echo "$delimiter"
+    echo "$delim"
 
     date "+%d %b %Y (%a) %H:%M"
     }
