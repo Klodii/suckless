@@ -4,20 +4,57 @@ delim='|'
 
 status(){
     # volume
+    #    
     mute=$(pulsemixer --get-mute)
     if [[ $mute == 1 ]]; then
-        echo "Mute vol."
+        echo ""
     else
-        pulsemixer --get-volume | awk '{print int($1 * 100/150) "% vol."}'
+        volume=$(pulsemixer --get-volume | awk '{print int($1 * 100/150)}')
+
+        case $volume in
+            100|[6-9][0-9]) v_icon=" " ;;
+            [1-5][0-9]) v_icon="" ;;
+            *)  v_icon="" ;;
+        esac
+
+        echo "$v_icon$volume%"
     fi
     echo "$delim"
 
-    # Wifi quality percentage and up/down if ethernet is connected
-    grep "^\s*w" /proc/net/wireless | awk '{ print "WiFi", int($3 * 100 / 70) "%" }'
+    # Bluetooth
+    #    
+
+    # Ethernet
     # e* indicates ethernet connection
     # if you have wnat to indicate if a wifi is connected just change it to w*
-    sed "s/down/Ethernet down/;s/up/Ethernet up/" /sys/class/net/e*/operstate
+    #     ,
+    ethernet=$(cat /sys/class/net/e*/operstate)
+    if [ ethernet = 'up']; then
+        echo ""
+    else
+        # Wifi quality percentage and up/down if ethernet is connected
+        #       
+        grep "^\s*w" /proc/net/wireless | awk '{ print "", int($3 * 100 / 70) "%" }'
+    fi
     echo "$delim"
+
+    # Battery
+    #        
+    for capacity in /sys/class/power_supply/BAT?/capacity;
+    do
+    case "$(cat $capacity)" in
+        100) echo "" ;;
+        9[0-9]) echo "" ;;
+        8[0-9]|7[0-9]) echo "" ;;
+        6[0-9]|5[0-9]) echo "" ;;
+        4[0-9]|3[0-9]) echo "" ;;
+        2[0-9]) echo "" ;;
+        1[0-9]) echo "" ;;
+        [0-9]) echo "" ;;
+    esac
+    done
+
+    echo "$delimiter"
 
     date "+%d %b %Y (%a) %H:%M"
     }

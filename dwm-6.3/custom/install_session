@@ -3,6 +3,13 @@
 cp -v .xinitrc.sample /usr/local/bin/startdwm
 chmod -v +x /usr/local/bin/startdwm
 
+# Install the font with icons
+# tho show the icons run gucharmap, this application show
+# all the fonts that are installed in the machin.
+# To select the icons, choose the font you wnat and then go to
+# 'Private Use Area'
+cp -v MaterialIcons-Regular.ttf /usr/share/fonts/
+
 cp -v statusbar /usr/local/bin/
 
 cp -v wallpaper.png "$HOME/.config/"
