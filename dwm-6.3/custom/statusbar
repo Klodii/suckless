@@ -28,7 +28,7 @@ status(){
     # e* indicates ethernet connection
     # if you have wnat to indicate if a wifi is connected just change it to w*
     #     ,
-    # For same reason i can't use the varialbe ethernet_path="/sys/class/net/e*"
+    # For some reason i can't use the varialbe ethernet_path="/sys/class/net/e*"
     if [ -d /sys/class/net/e* ] && [ $(cat /sys/class/net/e*/operstate) = 'up' ]; then
         echo ""
     else
