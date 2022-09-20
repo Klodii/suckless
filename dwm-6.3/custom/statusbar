@@ -43,25 +43,29 @@ status(){
     # Print all batteries, their percentage remaining and an icon corresponding to charge status
     for battery in /sys/class/power_supply/BAT?;
     do
-        # if battery folder does not exist exirt from loop
+        # if battery folder does not exist exit from loop
         [ -d "$battery" ] || break
 
         capacity=$(cat "$battery"/capacity) || break
         status=$(cat "$battery"/status)
 
-        # If it is discharging and 25% or less, we will add a ! as a warning
-        [ "$status" = "$Discharging" ] && ["$capacity" -le 25 ] $$ warn="!"
+        if [ "$status" = "Charging" ]; then
+            b_icon=" "
+        else
+            # If it is discharging and 25% or less, we will add a ! as a warning
+            [ "$status" = "$Discharging" ] && ["$capacity" -le 25 ] $$ warn="!"
 
-        case $capacity in
-            100) b_icon="" ;;
-            9[0-9]) b_icon="" ;;
-            8[0-9]|7[0-9]) b_icon="" ;;
-            6[0-9]|5[0-9]) b_icon="" ;;
-            4[0-9]|3[0-9]) b_icon="" ;;
-            2[0-9]) b_icon="" ;;
-            1[0-9]) b_icon="" ;;
-            [0-9]) b_icon="" ;;
-        esac
+            case $capacity in
+                100) b_icon="" ;;
+                9[0-9]) b_icon="" ;;
+                8[0-9]|7[0-9]) b_icon="" ;;
+                6[0-9]|5[0-9]) b_icon="" ;;
+                4[0-9]|3[0-9]) b_icon="" ;;
+                2[0-9]) b_icon="" ;;
+                1[0-9]) b_icon="" ;;
+                [0-9]) b_icon="" ;;
+            esac
+        fi
 
         echo "$b_icon$capacity%$warn"
     done
