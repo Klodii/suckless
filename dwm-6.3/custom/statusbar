@@ -49,7 +49,7 @@ status(){
         capacity=$(cat "$battery"/capacity) || break
         status=$(cat "$battery"/status)
 
-        if [ "$status" = "Charging" ]; then
+        if [ "$status" = "Charging" ] || [ "$status" = "Full" ]; then
             b_icon=" "
         else
             # If it is discharging and 25% or less, we will add a ! as a warning
@@ -69,6 +69,14 @@ status(){
 
         echo "$b_icon$capacity%$warn"
     done
+
+    echo "$delim"
+
+    # updatable packages
+    #  
+    n_packages=$(cat /var/lib/update-notifier/updates-available | grep applied | awk '{ print $1 }')
+
+    echo " $n_packages"
 
     echo "$delim"
 
