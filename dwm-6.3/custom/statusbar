@@ -73,10 +73,10 @@ status(){
     echo "$delim"
 
     # updatable packages
-    #  
-    n_packages=$(cat /var/lib/update-notifier/updates-available | grep applied | awk '{ print $1 }')
+    #   
+    n_packages=$(apt list --upgradable 2>/dev/null | grep upgradable | wc -l)
 
-    echo " $n_packages"
+    echo " $n_packages"
 
     echo "$delim"
 
