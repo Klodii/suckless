@@ -68,9 +68,8 @@ status(){
         fi
 
         echo "$b_icon$capacity%$warn"
+        echo "$delim"
     done
-
-    echo "$delim"
 
     # updatable packages
     #   
