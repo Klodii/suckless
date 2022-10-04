@@ -53,7 +53,7 @@ status(){
             b_icon=" "
         else
             # If it is discharging and 25% or less, we will add a ! as a warning
-            [ "$status" = "$Discharging" ] && ["$capacity" -le 25 ] $$ warn="!"
+            [ "$status" = "$Discharging" ] && [ "$capacity" -le 25 ] && warn="!"
 
             case $capacity in
                 100) b_icon="" ;;
