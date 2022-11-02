@@ -65,6 +65,9 @@ static const char *volumeup[] = {"vc", "up", NULL};  /* vc (volume control) is a
 static const char *volumedown[] = {"vc", "down", NULL}; /* vc (volume control) is a script i wrote to handle the volume */
 static const char *mute[] = {"vc", "toggle", NULL}; /* vc (volume control) is a script i wrote to handle the volume */
 static const char *lock[] = {"slock", NULL};
+/* bookmark scripts must be present in PATH */
+static const char *add_bookmark[] = {"add_bookmark", NULL};
+static const char *paste_bookmark[] = {"paste_bookmark", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -103,6 +106,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = add_bookmark} },
+	{ MODKEY,                       XK_Insert, spawn,          {.v = paste_bookmark} },
 	{ MODKEY,                       XK_F9,     spawn,          {.v = volumedown} },
 	{ MODKEY,                       XK_F10,    spawn,          {.v = volumeup} },
 	{ MODKEY,                       XK_F11,    spawn,          {.v = mute} },
