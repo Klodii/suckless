@@ -26,10 +26,10 @@ You can run ./custom/install_session, with sudo authorizations, to automatically
 ```
 $ cp custom/statusbar /usr/local/bin/
 ```
-we put the script in the bin directory because it is present in the PATH, so we can use the `statusbar` script in our `dwm.desktop` file (described in the end).
+we put the script in the bin directory because it is present in the PATH, so we can use the `statusbar` script in our `dwm.desktop` file (described at the end).
 If you want to add or modify the status bar you can edit the `statusbar` script.
 
-- now we need to add the script that actually execute dwm in `/usr/local/bin/` directory, doing so we can execute the script wherever we are (becasue the bin directory is in PATCH). Copy ./custom/.xinitrc.sample file in `/usr/local/bin/` and rename it in `startdwm`
+- now we need to add the script that actually execute dwm in `/usr/local/bin/` directory, doing so we can execute the script wherever we are (becasue the bin directory is in PATH). Copy ./custom/.xinitrc.sample file in `/usr/local/bin/` and rename it in `startdwm`
 ```bash
 $ cp custom/.xinitrc.sample /usr/local/bin/startdwm
 ```
@@ -45,7 +45,7 @@ I personally did the second option because with ubuntu (and two accounts) the fi
 ## Add wallpaper
 (in the install_session script it will be installed the default wallpaper, to change it you have to change the `~/.config/wallpaper.png` file)
 
-If you want to use a wallpaper install `xwallpaper` and designate a location to store the image you want to use ha a wallpaper, this location will be used by `xwallpaper` to render the image.
+If you want to use a wallpaper you have to install `xwallpaper` and designate a location to store the image you want to use a wallpaper, this location will be used by `xwallpaper` to render the image.
 
 In order to make the wallpaper persistent after each login we put the xwallpaper command in the .xinitrc or startdwm file, and the path of the image is `~/.config/wallpaper.png`
 

@@ -53,7 +53,7 @@ status(){
             b_icon=" "
         else
             # If it is discharging and 25% or less, we will add a ! as a warning
-            [ "$status" = "$Discharging" ] && [ "$capacity" -le 25 ] && warn="!"
+            [ "$status" = "Discharging" ] && [ "$capacity" -le 25 ] && warn="(!)" && $(notify-send -u critical "Battery low")
 
             case $capacity in
                 100) b_icon="" ;;
@@ -67,7 +67,7 @@ status(){
             esac
         fi
 
-        echo "$b_icon$capacity%$warn"
+        echo "$b_icon$capacity% $warn"
         echo "$delim"
     done
 
