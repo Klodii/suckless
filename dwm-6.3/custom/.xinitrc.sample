@@ -1,6 +1,10 @@
 # remap caps lock to escape
 setxkbmap -option caps:escape
 
+# key holding will print only one character
+xset -r
+
+
 # Add wallpaper
 xwallpaper --zoom ~/.config/wallpaper.png
 statusbar &
