@@ -12,6 +12,12 @@ cp -v MaterialIcons-Regular.ttf /usr/share/fonts/
 
 cp -v statusbar /usr/local/bin/
 
-cp -v wallpaper.png "$HOME/.config/"
+WP_FOLDER_PATH="$HOME/.config"
+WP_FILE_NAME="wallpaper.png"
+if [ -f "$WP_FOLDER_PATH/$WP_FILE_NAME" ]; then
+    echo "wallpaper already found in $WP_FOLDER_PATH/$WP_FILE_NAME"
+else
+    cp -v $WP_FILE_NAME $WP_FOLDER_PATH
+fi
 
 cp -v dwm.desktop /usr/share/xsessions/
