@@ -58,7 +58,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "gnome-terminal", NULL };
 static const char *web[] = { "brave-browser", NULL };
 /* vc must be a script present in /usr/local/bin */
 static const char *volumeup[] = {"vc", "up", NULL};  /* vc (volume control) is a script i wrote to handle the volume */
