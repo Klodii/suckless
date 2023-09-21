@@ -52,3 +52,39 @@ In order to make the wallpaper persistent after each login we put the xwallpaper
 
 # Configuration
 To configure a suckless package you need to edit the `config.h` file and then compile it (`sudo make clean install`)
+
+
+# Termial settings
+![terminal image](terminal.png)
+- cursor blinking: No
+- cursors chape: block
+- font: Monospace
+- font-size: 16
+
+## Colors
+### Normal
+  black = "#231f20", \
+  red = "#ee2e24", \
+  green = "#00853e", \
+  yellow = "#ffd204", \
+  blue = "#009ddc", \
+  magenta = "#98005d", \
+  cyan = "#85cebc", \
+  white = "#d9d8d8", \
+
+### Bright
+  black = "#737171", \
+  red = "#ee2e24", \
+  green = "#00853e", \
+  yellow = "#ffd204", \
+  blue = "#009ddc", \
+  magenta = "#98005d", \
+  cyan = "#85cebc", \
+  white = "#ffffff", \
+
+### Special
+  background = "#231f20", \
+  foreground = "#d9d8d8", \
+
+  cursor (background) = "#e49b1b",
+  cursor (foreground) = "#231f20",
