@@ -60,6 +60,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *web[] = { "brave-browser", NULL };
+static const char *poweroff[] = { "shutdown", "now" };
 /* vc must be a script present in /usr/local/bin */
 static const char *volumeup[] = {"vc", "up", NULL};  /* vc (volume control) is a script i wrote to handle the volume */
 static const char *volumedown[] = {"vc", "down", NULL}; /* vc (volume control) is a script i wrote to handle the volume */
@@ -104,6 +105,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,           {.v = poweroff} },
 	{ MODKEY,                       XK_F9,     spawn,          {.v = volumedown} },
 	{ MODKEY,                       XK_F10,    spawn,          {.v = volumeup} },
 	{ MODKEY,                       XK_F11,    spawn,          {.v = mute} },
