@@ -2,15 +2,43 @@
 In this repository there are all my suckless installations with relative configurations.
 
 # How to install dwm (dinamic window manager) and st by suckless.org
-## dwm dependences
+## Dependecies
+
+### Base Packages
+
 ```bash
 $ sudo apt install libxft-dev libxinerama1 libxinerama-dev
 ```
 
+### Used softwares
+This configuration of `dwm`, that you can find in `config.h`, uses a bunch of
+software in its keybindings and without these you will face some difficulties
+using `dwm`. So make sure to install these software, **at least the terminal**,
+before using it.
+
+- **st**: _simple terminal_, is the terminal used in this configuration, opened
+  by pressing `super+return` or `super+backpspace`. To
+  install it check the README file inside the `st` directory.
+- **dmenu**: it is a handy menu that can be used in multiple ways, in our
+  configuration we use it to help the user search for given commands, to use it
+  you have to press `super+p`. To
+  install it check the README file inside the `dmenu` directory.
+
+- **slock**: it is used to lock the screen, to use it press `super+shift+q`. To
+  install it check the README file inside the `slock` directory.
+- **dunst**: is a notification deamon, that is not used directly by `dwm`, but it is
+set in the configuration settings `.xinitrc.sample`. To install it, run `sudo
+apt install dunst`
+- **xwallpaper**: this deamon enables to use an image as a wallpaper. To install
+  it, run `sudo apt install xwallpaper`
+
+
 ## Installation
 Each package have a README file with some information on the installation.
+Before installing it, make sure to have compiled it, execute:
+`sudo make clean install`.
 
-For dwm you can choose different paths:
+For `dwm` you can choose different paths:
 
 ### Using xinitrc
 Copy the ./custom/.xinitrc.sample file in the home directory and rename it in `.xinitrc`

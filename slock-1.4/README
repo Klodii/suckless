@@ -1,11 +1,21 @@
 slock - simple screen locker
 ============================
-simple screen locker utility for X. 
+simple screen locker utility for X.
 
 
 Requirements
 ------------
 In order to build slock you need the Xlib header files.
+
+Install the following librarires:
+- `sudo apt install libx11-dev`
+- `sudo apt install libxrandr-dev`
+
+
+Configuration
+-------------
+Make sure to edit the `config.h` file with the user name correct: it has to
+match the logged user name.
 
 
 Installation
