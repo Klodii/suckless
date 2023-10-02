@@ -4,6 +4,11 @@ setxkbmap -option caps:escape
 # key holding will print only one character
 xset -r
 
+# prevent monitor to turn off
+xset -dpms
+xset s noblank
+xset s off
+
 # Key binding deamon, it needs a config file, located in ~./config/sxhkd/sxhkdrc, to run in
 sxhkd &
 
