@@ -61,6 +61,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *web[] = { "brave", NULL };
 static const char *poweroff[] = { "shutdown", "now" };
+static const char *restart[] = { "shutdown", "-r", "now" };
 /* vc must be a script present in /usr/local/bin */
 static const char *volumeup[] = {"vc", "up", NULL};  /* vc (volume control) is a script i wrote to handle the volume */
 static const char *volumedown[] = {"vc", "down", NULL}; /* vc (volume control) is a script i wrote to handle the volume */
@@ -73,7 +74,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_BackSpace, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = web } },
-	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lock } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -104,8 +104,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lock } }, // lock screen
+	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} }, // logout
 	{ MODKEY|ShiftMask,             XK_s,      spawn,           {.v = poweroff} },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,           {.v = restart} },
 	{ MODKEY,                       XK_F9,     spawn,          {.v = volumedown} },
 	{ MODKEY,                       XK_F10,    spawn,          {.v = volumeup} },
 	{ MODKEY,                       XK_F11,    spawn,          {.v = mute} },
