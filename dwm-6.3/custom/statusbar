@@ -1,4 +1,15 @@
 #!/bin/bash
+function is_installed {
+    [ -z "$1" ] && echo "Command name missing" && exit 1
+    COMMAND=$1
+    FOUND=false
+    PATH_SPACED=${PATH//:/ } # separate each path by space instead of :
+    for individual_path in ${PATH_SPACED}; do
+        # true if file exist and is executable
+        [ -x "$individual_path/$COMMAND" ] && FOUND=true && break
+    done
+}
+
 
 delim='|'
 
@@ -73,7 +84,17 @@ status(){
 
     # updatable packages
     #   
-    n_packages=$(apt list --upgradable 2>/dev/null | grep upgradable | wc -l)
+
+    if [ $(is_installed apt) ]; then
+        # for debia systems
+        n_packages=$(apt list --upgradable 2>/dev/null | grep upgradable | wc -l)
+    elif [ $(is_installed checkupdates) ]; then
+        # for arch systems
+        n_packages=$(checkupdates 2>/dev/null | wc -l)
+    else
+        n_packages="NaN"
+    fi
+
 
     echo " $n_packages"
 
