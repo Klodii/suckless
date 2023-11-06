@@ -85,11 +85,19 @@ To configure a suckless package you need to edit the `config.h` file and then co
 # Termial settings
 ![terminal image](terminal.png)
 - cursor blinking: No
-- cursors chape: block
+- cursors shape: block
 - font: Monospace
 - font-size: 16
 
 ## Colors
+### Primary
+  background = "#231f20", \
+  foreground = "#d9d8d8",
+
+### Cursor
+  background = "#e49b1b", \
+  foreground = "#231f20",
+
 ### Normal
   black = "#231f20", \
   red = "#ee2e24", \
@@ -98,7 +106,7 @@ To configure a suckless package you need to edit the `config.h` file and then co
   blue = "#009ddc", \
   magenta = "#98005d", \
   cyan = "#85cebc", \
-  white = "#d9d8d8"
+  white = "#d9d8d8",
 
 ### Bright
   black = "#737171", \
@@ -108,12 +116,4 @@ To configure a suckless package you need to edit the `config.h` file and then co
   blue = "#009ddc", \
   magenta = "#98005d", \
   cyan = "#85cebc", \
-  white = "#ffffff"
-
-### Primary
-  background = "#231f20", \
-  foreground = "#d9d8d8", \
-
-### Cursor
-  background = "#e49b1b",
-  foreground = "#231f20",
+  white = "#ffffff",
