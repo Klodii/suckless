@@ -85,10 +85,10 @@ status(){
     # updatable packages
     #   
 
-    if [ $(is_installed apt) ]; then
+    if is_installed apt; then
         # for debia systems
         n_packages=$(apt list --upgradable 2>/dev/null | grep upgradable | wc -l)
-    elif [ $(is_installed checkupdates) ]; then
+    elif is_installed checkupdates; then
         # for arch systems
         n_packages=$(checkupdates 2>/dev/null | wc -l)
     else
