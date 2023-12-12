@@ -21,7 +21,7 @@ WP_FILE_NAME="wallpaper.png"
 if [ -f "$WP_FOLDER_PATH/$WP_FILE_NAME" ]; then
     echo "wallpaper already found in $WP_FOLDER_PATH/$WP_FILE_NAME"
 else
-    $COPY $WP_FILE_NAME $WP_FOLDER_PATH
+    $COPY bratto.png $WP_FOLDER_PATH/$WP_FILE_NAME
 fi
 
 $COPY dwm.desktop /usr/share/xsessions/
