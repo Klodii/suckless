@@ -1,21 +1,15 @@
 #!/bin/bash
 function is_installed {
-    [ -z "$1" ] && echo "Command name missing" && exit 1
     COMMAND=$1
-    FOUND=false
-    PATH_SPACED=${PATH//:/ } # separate each path by space instead of :
-    for individual_path in ${PATH_SPACED}; do
-        # true if file exist and is executable
-        [ -x "$individual_path/$COMMAND" ] && FOUND=true && break
-    done
-}
+    hash $COMMAND
+} 2> /dev/null
 
 
-delim='|'
+DELIM='|'
 
 status(){
     # volume
-    #    
+        
     mute=$(pulsemixer --get-mute)
     if [[ $mute == 1 ]]; then
         echo ""
@@ -30,7 +24,7 @@ status(){
 
         echo "$v_icon$volume%"
     fi
-    echo "$delim"
+    echo "$DELIM"
 
     # Bluetooth
     #    
@@ -47,7 +41,7 @@ status(){
         #       
         grep "^\s*w" /proc/net/wireless | awk '{ print "", int($3 * 100 / 70) "%" }'
     fi
-    echo "$delim"
+    echo "$DELIM"
 
     # Battery
     #        
@@ -79,7 +73,7 @@ status(){
         fi
 
         echo "$b_icon$capacity% $warn"
-        echo "$delim"
+        echo "$DELIM"
     done
 
     # updatable packages
@@ -98,14 +92,13 @@ status(){
 
     echo " $n_packages"
 
-    echo "$delim"
+    echo "$DELIM"
 
     date "+%d %b %Y (%a) %H:%M"
     }
 
 while :; do
     # tr is used to remove newlines because it does not render good
-    xsetroot -name "$(status | tr '\n\' ' ')"
-
+    xsetroot -name "$(status | tr '\n' ' ')"
     sleep 1m
 done
