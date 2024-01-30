@@ -9,9 +9,6 @@ xset -dpms
 xset s noblank
 xset s off
 
-# Key binding deamon, it needs a config file, located in ~./config/sxhkd/sxhkdrc, to run in
-sxhkd &
-
 # Add wallpaper
 xwallpaper --zoom ~/.config/wallpaper.png
 statusbar &
