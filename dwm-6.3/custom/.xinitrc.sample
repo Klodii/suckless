@@ -13,6 +13,9 @@ xset s off
 xwallpaper --zoom ~/.config/wallpaper.png
 statusbar &
 # notification deamon, used with notify-send
-dunst &
+hash dunst && dunst &
+# continuous file synchronization program, access syncthing at 127.0.0.1:8384
+hash syncthing && syncthing &
+
 
 exec dwm
