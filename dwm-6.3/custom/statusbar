@@ -1,15 +1,10 @@
 #!/bin/bash
-function is_installed {
-    COMMAND=$1
-    hash $COMMAND
-} 2> /dev/null
-
+source "$HOME/.local/bin/utils"
 
 DELIM='|'
-
 status(){
     # volume
-        
+
     mute=$(pulsemixer --get-mute)
     if [[ $mute == 1 ]]; then
         echo ""
@@ -30,17 +25,8 @@ status(){
     #    
 
     # Ethernet
-    # e* indicates ethernet connection
-    # if you have wnat to indicate if a wifi is connected just change it to w*
-    #     ,
-    # For some reason i can't use the varialbe ethernet_path="/sys/class/net/e*"
-    if [ -d /sys/class/net/e* ] && [ $(cat /sys/class/net/e*/operstate) = 'up' ]; then
-        echo ""
-    else
-        # Wifi quality percentage and up/down if ethernet is connected
-        #       
-        grep "^\s*w" /proc/net/wireless | awk '{ print "", int($3 * 100 / 70) "%" }'
-    fi
+    # "$HOME/.local/bin/ethernet"
+    ethernet
     echo "$DELIM"
 
     # Battery
