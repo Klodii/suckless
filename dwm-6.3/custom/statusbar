@@ -3,6 +3,9 @@ source "$HOME/.local/bin/utils"
 
 DELIM='|'
 status(){
+    # weather
+    echo $(weather -s)
+    echo "$DELIM"
     # volume
 
     mute=$(pulsemixer --get-mute)
