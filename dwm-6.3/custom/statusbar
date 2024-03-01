@@ -4,7 +4,7 @@ source "$HOME/.local/bin/utils"
 DELIM='|'
 status(){
     # weather
-    weather -s
+    timeout 5s weather -s || echo 'weather script is taking too long'
     echo "$DELIM"
 
     # volume
