@@ -53,23 +53,10 @@ status(){
     done
 
     # updatable packages
-    #   
-
-    if is_installed apt; then
-        # for debia systems
-        n_packages=$(apt list --upgradable 2>/dev/null | grep upgradable | wc -l)
-    elif is_installed checkupdates; then
-        # for arch systems
-        n_packages=$(checkupdates 2>/dev/null | wc -l)
-    else
-        n_packages="NaN"
-    fi
-
-
-    echo " $n_packages"
-
+    updatable-pkg -i
     echo "$DELIM"
 
+    # date-time
     date "+%d %b %Y (%a) %H:%M"
     }
 
