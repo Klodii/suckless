@@ -16,7 +16,7 @@ status(){
 
     # Ethernet
     # "$HOME/.local/bin/ethernet"
-    wifi
+    wifi -i
     echo "$DELIM"
 
     # Battery
