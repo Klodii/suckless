@@ -20,7 +20,6 @@ status(){
     echo "$DELIM"
 
     # Battery
-    #        
     # Print all batteries, their percentage remaining and an icon corresponding to charge status
     for battery in /sys/class/power_supply/BAT?;
     do
