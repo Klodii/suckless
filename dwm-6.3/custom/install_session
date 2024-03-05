@@ -13,7 +13,7 @@ chmod -v +x /usr/local/bin/startdwm
 # 'Private Use Area'
 $COPY MaterialIcons-Regular.ttf /usr/share/fonts/
 
-ln -s  "$(pwd)/statusbar" /usr/local/bin/statusbar
+ln -s  "$(pwd)/dwm_statusbar" /usr/local/bin/dwm_statusbar
 $COPY .Xdefaults "$HOME/"
 
 WP_FOLDER_PATH="$HOME/.config"
