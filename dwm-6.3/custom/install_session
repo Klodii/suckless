@@ -2,8 +2,7 @@
 
 # the \ before a command suppresses alias expansion, it is used for a security
 # reason
-COPY='\cp -v'
-$COPY .xinitrc.sample /usr/local/bin/startdwm
+\cp -v .xinitrc.sample /usr/local/bin/startdwm
 chmod -v +x /usr/local/bin/startdwm
 
 # Install the font with icons
@@ -11,17 +10,17 @@ chmod -v +x /usr/local/bin/startdwm
 # all the fonts that are installed in the machin.
 # To select the icons, choose the font you wnat and then go to
 # 'Private Use Area'
-$COPY MaterialIcons-Regular.ttf /usr/share/fonts/
+cp -v HackNerdFont-Regular.ttf /usr/share/fonts/
 
 ln -s  "$(pwd)/dwm_statusbar" /usr/local/bin/dwm_statusbar
-$COPY .Xdefaults "$HOME/"
+cp -v .Xdefaults "$HOME/"
 
 WP_FOLDER_PATH="$HOME/.config"
 WP_FILE_NAME="wallpaper.png"
 if [ -f "$WP_FOLDER_PATH/$WP_FILE_NAME" ]; then
     echo "wallpaper already found in $WP_FOLDER_PATH/$WP_FILE_NAME"
 else
-    $COPY bratto.png $WP_FOLDER_PATH/$WP_FILE_NAME
+    cp -v bratto.png $WP_FOLDER_PATH/$WP_FILE_NAME
 fi
 
-$COPY dwm.desktop /usr/share/xsessions/
+cp -v dwm.desktop /usr/share/xsessions/
