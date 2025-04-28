@@ -19,13 +19,15 @@ before using it.
 - **st**: _simple terminal_, is the terminal used in this configuration, opened
   by pressing `super+return` or `super+backpspace`. To
   install it check the README file inside the `st` directory.
+  You might need to install the **font** used, more info below.
 - **dmenu**: it is a handy menu that can be used in multiple ways, in our
   configuration we use it to help the user search for given commands, to use it
   you have to press `super+p`. To
   install it check the README file inside the `dmenu` directory.
-
 - **slock**: it is used to lock the screen, to use it press `super+shift+q`. To
   install it check the README file inside the `slock` directory.
+  Make sure that the user name is written correctly in the configuration file
+  otherwise it will not work.
 - **dunst**: is a notification deamon, that is not used directly by `dwm`, but it is
 set in the configuration settings `.xinitrc.sample`. To install it, run `sudo
 apt install dunst`
@@ -88,6 +90,19 @@ To configure a suckless package you need to edit the `config.h` file and then co
 - cursors shape: block
 - font: Monospace
 - font-size: 16
+
+## Font
+With `st` we are using the **Liberation Mono** font.
+You can search for it in your system by running
+```bash
+fc-list | grep "Liberation Mono"
+```
+
+If it does not return anything, you have to install it.
+To do you you can run
+```bash
+sudo pacman -S ttf-liberation
+```
 
 ## Colors
 ### Primary
